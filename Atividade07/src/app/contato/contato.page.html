@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novo Contato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formulario">
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input formControlName="nome" required></ion-input>
+    <ion-note padding color="danger" *ngIf="formulario.get('nome').hasError('required') && (formulario.get('nome').dirty || formulario.get('nome').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ mensagens_validacao.nome_required }}
+     </ion-note>
+     <ion-note padding color="danger" *ngIf="formulario.get('nome').hasError('minlength') && (formulario.get('nome').dirty || formulario.get('nome').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ mensagens_validacao.nome_minlength }}
+     </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input formControlName="email" required></ion-input>
+    <ion-note padding color="danger" *ngIf="formulario.get('email').hasError('required') && (formulario.get('email').dirty || formulario.get('email').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ mensagens_validacao.email_required }}
+     </ion-note>
+     <ion-note padding color="danger" *ngIf="formulario.get('email').hasError('pattern') && (formulario.get('email').dirty || formulario.get('email').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ mensagens_validacao.email_pattern }}
+     </ion-note>
+  </ion-item>
+  <ion-list>
+      <ion-radio-group>
+        <ion-list-header>
+          <ion-label>Sexo</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Feminino</ion-label>
+          <ion-radio slot="start" value="feminino"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio slot="start" value="masculino"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+    </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label position="floating">Dia</ion-label>
+            <ion-select>
+              <ion-select-option value="01">1</ion-select-option>
+              <ion-select-option value="02">2</ion-select-option>
+              <ion-select-option value="03">3</ion-select-option>
+              <ion-select-option value="04">4</ion-select-option>
+              <ion-select-option value="05">5</ion-select-option>
+              <ion-select-option value="06">6</ion-select-option>
+              <ion-select-option value="07">7</ion-select-option>
+              <ion-select-option value="08">8</ion-select-option>
+              <ion-select-option value="09">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+              <ion-select-option value="11">11</ion-select-option>
+              <ion-select-option value="12">12</ion-select-option>
+              <ion-select-option value="13">13</ion-select-option>
+              <ion-select-option value="14">14</ion-select-option>
+              <ion-select-option value="15">15</ion-select-option>
+              <ion-select-option value="16">16</ion-select-option>
+              <ion-select-option value="17">17</ion-select-option>
+              <ion-select-option value="18">18</ion-select-option>
+              <ion-select-option value="19">19</ion-select-option>
+              <ion-select-option value="20">20</ion-select-option>
+              <ion-select-option value="21">21</ion-select-option>
+              <ion-select-option value="22">22</ion-select-option>
+              <ion-select-option value="23">23</ion-select-option>
+              <ion-select-option value="24">24</ion-select-option>
+              <ion-select-option value="25">25</ion-select-option>
+              <ion-select-option value="26">26</ion-select-option>
+              <ion-select-option value="27">27</ion-select-option>
+              <ion-select-option value="28">28</ion-select-option>
+              <ion-select-option value="29">29</ion-select-option>
+              <ion-select-option value="30">30</ion-select-option>
+              <ion-select-option value="31">31</ion-select-option>
+            </ion-select>
+          </ion-item>
+        <ion-item>
+            <ion-label position="floating">Mês</ion-label>
+            <ion-select>
+              <ion-select-option value="01">Janeiro</ion-select-option>
+              <ion-select-option value="02">Fevereiro</ion-select-option>
+              <ion-select-option value="03">Março</ion-select-option>
+              <ion-select-option value="04">Abril</ion-select-option>
+              <ion-select-option value="05">Maio</ion-select-option>
+              <ion-select-option value="06">Junho</ion-select-option>
+              <ion-select-option value="07">Julho</ion-select-option>
+              <ion-select-option value="08">Agosto</ion-select-option>
+              <ion-select-option value="09">Setembro</ion-select-option>
+              <ion-select-option value="10">Outubro</ion-select-option>
+              <ion-select-option value="11">Novembro</ion-select-option>
+              <ion-select-option value="12">Dezembro</ion-select-option>
+            </ion-select>
+          </ion-item>
+    </ion-list>
+    <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input type="number" formControlName="telefone" required></ion-input>
+        <ion-note padding color="danger" *ngIf="formulario.get('telefone').hasError('required') && (formulario.get('telefone').dirty || formulario.get('telefone').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>{{ mensagens_validacao.telefone_required }}
+         </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Aceito os termos do contato</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
+      </ion-item>
+      <ion-button (click)="salvar()" [disabled]="!formulario.valid" color="success">Salvar</ion-button>
+    </form>
+</ion-content>
